@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+
+        <item name="android:actionBarStyle">@style/ActionBar</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="editTextStyle">@style/EditText</item>
+
+        <item name="drawerArrowStyle">@style/BurgerIcon</item>
+        <item name="checkboxStyle">@style/CheckBox</item>
+
+        <item name="android:statusBarColor">@color/action_dark</item>
+        <item name="colorAccent">@color/action</item>
+        <item name="android:windowBackground">@color/window_background</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:listDivider">@color/action</item>
+
+        <item name="colorControlHighlight">@color/ripple_material_dark</item>
+    </style>
+
+    <style name="FullScreenDialog">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/background_splash</item>
+        <item name="colorAccent">@color/action</item>
+    </style>
+
+    <style name="DrawerTheme">
+        <item name="colorPrimary">@color/content_background</item>
+        <item name="android:colorControlHighlight">@color/white</item>
+        <item name="colorControlNormal">@color/content_background</item>
+
+    </style>
+
+</resources>

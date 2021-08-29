@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#001614</color>
+    <color name="colorPrimaryDark">#001613</color>
+    <color name="colorAccent">@color/action</color>
+
+    <!--all above this line is going to become a victim of refactoring!!!-->
+
+    <!--NEW COLOR SYSTEM-->
+
+
+    <!--ACTUAL COLORS-->
+
+    <color name="white">#FFFFFF</color>
+    <color name="white_70">#50FFFFFF</color>
+    <color name="white_45">#72FFFFFF</color>
+
+
+    <color name="black">#000000</color>
+    <color name="dark_green">#003017</color>
+    <color name="darkest_green">#001a0c</color>
+    <color name="greyblue">#8193AA</color>
+
+    <color name="bright_purple">#fb576b</color>
+    <color name="cyan">#2ad0d4</color>
+    <color name="base_green">#66BA7A</color>
+    <color name="base_yellow">#ffd400</color>
+
+    <color name="grey1">#f6f6f6</color>
+    <color name="grey2">#f0f0f0</color>
+    <color name="grey3">#e6e7e8</color>
+    <color name="grey4">#d1d3d4</color>
+    <color name="transparent_overlay">#44000000</color>
+
+    <!--COLOR REFERENCES-->
+
+    <color name="window_background">@color/black</color>
+    <color name="content_background">@color/dark_green</color>
+    <color name="item_selected_background">@color/green</color>
+    <color name="active">@color/bright_purple</color>
+
+    <color name="text_color_2">@color/dark_green</color>
+    <color name="text_color_3">@color/grey4</color>
+
+    <color name="dark_red">#c2434a</color>
+    <color name="darkest_red">#46050d</color>
+    <color name="green">@color/base_green</color>
+    <color name="yellow">@color/base_yellow</color>
+
+    <color name="inactive">@color/greyblue</color>
+    <color name="disabled">@color/greyblue</color>
+    <color name="enabled">@color/cyan</color>
+    <color name="button_active">@color/dark_green</color>
+    <color name="button_inactive">@color/grey4</color>
+    <color name="preselected_item">@color/green</color>
+
+
+    <color name="action">@color/active</color>
+    <color name="action_dark">@color/dark_red</color>
+    <color name="action_darkest">@color/darkest_red</color>
+    <color name="transparent">@null</color>
+
+</resources>

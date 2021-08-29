@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.michaelpohl.loopyplayer2.ui.player.PlayerViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        style="@style/MatchParent"
+        android:background="@color/black"
+        tools:context=".ui.player.PlayerFragment">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_loops"
+            style="@style/MatchWidth"
+            android:layout_height="0dp"
+            android:background="@null"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/info_separator"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_empty_message"
+            style="@style/MatchWidth"
+            android:layout_height="0dp"
+            android:layout_margin="24dp"
+
+            android:gravity="center"
+            android:text="@string/player_empty_message"
+            android:textAppearance="@style/Text.HeaderLarge"
+            android:visibility="@{model.state.emptyMessageVisibility}"
+            app:layout_constraintBottom_toBottomOf="@+id/rv_loops"
+            app:layout_constraintEnd_toEndOf="@+id/rv_loops"
+            app:layout_constraintStart_toStartOf="@id/rv_loops"
+            app:layout_constraintTop_toTopOf="@+id/rv_loops" />
+
+
+        <View
+            android:id="@+id/info_separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/action"
+            android:paddingTop="8dp"
+            app:layout_constraintBottom_toTopOf="@id/tv_sample_rate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_sample_rate"
+            style="@style/WrapContent.SingleLine"
+            android:padding="4dp"
+            android:text="@{model.sampleRateDisplayText}"
+            android:textColor="@color/action"
+            app:layout_constraintBottom_toTopOf="@id/controls_separator"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="test" />
+
+        <View
+            android:id="@+id/controls_separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/action"
+            android:paddingTop="8dp"
+            app:layout_constraintBottom_toTopOf="@id/btn_play"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btn_play"
+            style="@style/Button.SmallIcon"
+            android:background="?attr/selectableItemBackground"
+            android:elevation="2dp"
+            android:onClick="@{() -> model.onStartPlaybackClicked()}"
+            android:src="@drawable/ic_play"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_pause"
+            app:tint="@color/background_clickable_item" />
+
+        <ImageButton
+            android:id="@+id/btn_stop"
+            style="@style/Button.SmallIcon"
+            android:background="?attr/selectableItemBackground"
+            android:elevation="2dp"
+            android:onClick="@{() -> model.onStopPlaybackClicked()}"
+            android:src="@drawable/ic_stop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_pause"
+            app:tint="@color/background_clickable_item" />
+
+        <ImageButton
+            android:id="@+id/btn_pause"
+            style="@style/Button.SmallIcon"
+            android:background="?attr/selectableItemBackground"
+            android:elevation="2dp"
+            android:onClick="@{() -> model.onPausePlaybackClicked()}"
+            android:src="@drawable/ic_pause"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:tint="@color/background_clickable_item" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/window_background"
+            android:elevation="10dp"
+            android:visibility="@{model.state.processingOverlayVisibility}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_loading_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="@string/loading_overlay_headline"
+                android:textColor="@color/action"
+                app:layout_constraintBottom_toTopOf="@id/tv_loading_info"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:text="Processing" />
+
+            <TextView
+                android:id="@+id/tv_loading_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="@{model.processingText}"
+                android:textColor="@color/action"
+                app:layout_constraintBottom_toTopOf="@id/pb_loading_progress"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_loading_header"
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:text="Processing" />
+
+            <ProgressBar
+                android:id="@+id/pb_loading_progress"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:progress="@{model.state.conversionProgress}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_loading_info"
+                app:layout_constraintVertical_chainStyle="packed" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
